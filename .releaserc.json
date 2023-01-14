@@ -10,7 +10,11 @@
     [
       "@semantic-release/github",
       {
-        "addReleases": true
+        "addReleases": true,
+        "assets": [
+          {"path": "dist/**.whl", "label": "Package"},
+          {"path": "dist/**.tar.gz", "label": "tar.gz package"}
+        ]
       }
     ]
   ]

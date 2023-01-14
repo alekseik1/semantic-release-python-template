@@ -1,22 +1,36 @@
 {
-  "branches": ["main"],
+  "branches": [
+    "main"
+  ],
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
-    ["@semantic-release/exec", {
-      "generateNotesCmd": "poetry version ${nextRelease.version}",
-      "prepareCmd": "poetry build"
-    }],
-    ["@semantic-release/changelog",
-      {"changelogFile": "CHANGELOG.md"}
+    [
+      "@semantic-release/exec",
+      {
+        "generateNotesCmd": "poetry version ${nextRelease.version}",
+        "prepareCmd": "poetry build"
+      }
+    ],
+    [
+      "@semantic-release/changelog",
+      {
+        "changelogFile": "CHANGELOG.md"
+      }
     ],
     [
       "@semantic-release/github",
       {
         "addReleases": true,
         "assets": [
-          {"path": "dist/**.whl", "label": "Package"},
-          {"path": "dist/**.tar.gz", "label": "tar.gz package"}
+          {
+            "path": "dist/**.whl",
+            "label": "Package"
+          },
+          {
+            "path": "dist/**.tar.gz",
+            "label": "tar.gz package"
+          }
         ]
       }
     ]

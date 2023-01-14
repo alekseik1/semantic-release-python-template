@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@semantic-release/exec": "github:semantic-release/exec"
+  }
+}

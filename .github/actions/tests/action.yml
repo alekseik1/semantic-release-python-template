@@ -1,0 +1,12 @@
+name: Test Python
+description: Test Python package
+
+runs:
+  using: "composite"
+  steps:
+    - name: Run pytest
+      shell: bash
+      run: |
+        cd ${{ github.workspace }}
+        source ./venv/bin/activate
+        pytest

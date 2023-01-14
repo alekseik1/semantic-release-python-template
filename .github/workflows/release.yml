@@ -21,6 +21,8 @@ jobs:
         with:
           node-version: "lts/*"
           cache: 'npm'
+      - name: Install Node packages
+        run: npm i
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}

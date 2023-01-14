@@ -1,3 +1,16 @@
+# [1.2.0](https://github.com/alekseik1/semantic-release-python-template/compare/v1.1.3...v1.2.0) (2023-01-14)
+
+
+### Features
+
+* **main:** third print ([d5ea89c](https://github.com/alekseik1/semantic-release-python-template/commit/d5ea89c27e56b15a1b58f82fe3cd0b066a576adc))
+
+
+
+
+
+Bumping version from 1.1.3 to 1.2.0
+
 ## [1.1.3](https://github.com/alekseik1/semantic-release-python-template/compare/v1.1.2...v1.1.3) (2023-01-14)
 
 

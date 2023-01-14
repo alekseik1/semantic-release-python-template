@@ -3,6 +3,10 @@
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
+    ["@semantic-release/exec", {
+      "generateNotesCmd": "poetry version ${nextRelease.version}",
+      "prepareCmd": "poetry build"
+    }],
     [
       "@semantic-release/github",
       {

@@ -1,0 +1,22 @@
+name: Test
+on:
+  push:
+    branches-ignore:
+      - main
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Install deps
+        uses: ./.github/actions/python-deps
+
+      - name: Run Python tests
+        uses: ./.github/actions/tests

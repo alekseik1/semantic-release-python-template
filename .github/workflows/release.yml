@@ -1,4 +1,4 @@
-name: Release
+name: build and release
 on:
   push:
     branches:
@@ -18,7 +18,9 @@ jobs:
         uses: ./.github/actions/python-deps
 
       - name: Run Python tests
-        uses: ./.github/actions/tests
+        run: |
+          source ./venv/bin/activate
+          pytest
 
       # Semantic release
       - name: Setup Node.js

@@ -3,7 +3,8 @@
     "release",
     {
       "name": "trunk",
-      "prerelease": true
+      "prerelease": true,
+      "channel": "alpha"
     }
   ],
   "plugins": [

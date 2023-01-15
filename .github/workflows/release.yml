@@ -44,3 +44,6 @@ jobs:
           PULL_REQUEST_BRANCH: "trunk"
           PULL_REQUEST_BODY: "Automatic PR, please merge it."
           PULL_REQUEST_ASSIGNEES: "alekseik1"
+          PASS_IF_EXISTS: true
+          PASS_ON_ERROR: true
+          PULL_REQUEST_UPDATE: true

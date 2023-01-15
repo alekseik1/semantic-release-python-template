@@ -1,29 +1,17 @@
-name: test and release
+name: release
 on:
   push:
     branches:
-      - main
+      - release
+
 jobs:
-  test:
-    name: test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: Install deps
-        uses: ./.github/actions/python-deps
-
-      - name: Run Python tests
-        uses: ./.github/actions/tests
-
   release:
     name: release
     runs-on: ubuntu-latest
-#    concurrency:
-#      group: release
-#      cancel-in-progress: true
+    # semantic release will skip outdated branch anyway, this will prevent from spending CI minutes on that
+    concurrency:
+      group: release
+      cancel-in-progress: true
     steps:
       - name: Checkout
         uses: actions/checkout@v3

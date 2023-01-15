@@ -19,6 +19,15 @@
       }
     ],
     [
+      "@semantic-release/git",
+      {
+        "assets": [
+          "CHANGELOG.md",
+          "pyproject.toml"
+        ]
+      }
+    ],
+    [
       "@semantic-release/github",
       {
         "addReleases": true,

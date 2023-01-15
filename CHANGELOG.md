@@ -1,3 +1,21 @@
+# [1.3.0](https://github.com/alekseik1/semantic-release-python-template/compare/v1.2.0...v1.3.0) (2023-01-15)
+
+
+### Features
+
+* **main:** sum two ([6c55bfe](https://github.com/alekseik1/semantic-release-python-template/commit/6c55bfe1db8f167e105a8f8b85ad4093b23963da))
+
+
+### Reverts
+
+* Revert "build(semver): disable git plugin" ([6561b10](https://github.com/alekseik1/semantic-release-python-template/commit/6561b10d8eb3cb95fbc8c5379d5da5c5e1b847fc))
+
+
+
+
+
+Bumping version from 1.2.0 to 1.3.0
+
 # [1.2.0](https://github.com/alekseik1/semantic-release-python-template/compare/v1.1.3...v1.2.0) (2023-01-14)
 
 

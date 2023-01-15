@@ -2,7 +2,7 @@
   "branches": [
     "release",
     {
-      "name": "main",
+      "name": "trunk",
       "prerelease": true
     }
   ],

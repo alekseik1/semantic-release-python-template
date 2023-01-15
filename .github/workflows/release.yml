@@ -39,7 +39,7 @@ jobs:
       - name: Open PR back to trunk
         uses: vsoch/pull-request-action@master
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           BRANCH_PREFIX: "release"
           PULL_REQUEST_BRANCH: "trunk"
           PULL_REQUEST_BODY: "Automatic PR, please merge it."

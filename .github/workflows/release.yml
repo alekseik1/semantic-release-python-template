@@ -2,9 +2,6 @@ name: "Test & release"
 on:
   push:
   pull_request:
-    branches:
-      - trunk
-      - release
 
 jobs:
   test:

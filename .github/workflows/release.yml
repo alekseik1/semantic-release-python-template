@@ -1,13 +1,59 @@
-name: Release package
+name: "Test & release"
 on:
   push:
+  pull_request:
     branches:
+      - trunk
       - release
 
 jobs:
+  test:
+    name: "test package"
+    runs-on: ubuntu-latest
+    # Save time - no tests on push to `release` branch
+    if: github.ref_name != 'release'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Install deps
+        uses: ./.github/actions/python-deps
+      - name: Run tests
+        uses: ./.github/actions/tests
+  release-dry-run:
+    name: "release dry-run"
+    runs-on: ubuntu-latest
+    # Save time - no tests on push to `release` branch
+    if: github.ref_name != 'release'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Install deps
+        uses: ./.github/actions/python-deps
+      # Semantic release
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "lts/*"
+          cache: 'npm'
+      - name: Install Node packages
+        run: npm i
+      - name: Release dry-mode
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: npx semantic-release --debug --dry-run
   release:
     name: release
     runs-on: ubuntu-latest
+    if: github.ref_name == 'release'
+    needs:
+      - test
+      - release-dry-run
     # semantic release will skip outdated branch anyway, this will prevent from spending CI minutes on that
     concurrency:
       group: release
@@ -34,8 +80,8 @@ jobs:
         run: npx semantic-release --debug
       - name: Save version to PR title
         run: |
-          VERSION=$(poetry version -s)
-          echo "PULL_REQUEST_TITLE=Push release $VERSION back to trunk" >> $GITHUB_ENV
+           VERSION=$(poetry version -s)
+           echo "PULL_REQUEST_TITLE=Push release $VERSION back to trunk" >> $GITHUB_ENV
       - name: Open PR back to trunk
         uses: vsoch/pull-request-action@master
         env:

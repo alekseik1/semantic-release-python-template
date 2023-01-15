@@ -2,8 +2,8 @@
   "branches": [
     "release",
     {
-      "name": "main",
-      "prerelease": true
+      "name": "trunk",
+      "prerelease": "alpha"
     }
   ],
   "plugins": [

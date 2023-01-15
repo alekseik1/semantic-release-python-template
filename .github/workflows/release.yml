@@ -1,11 +1,11 @@
-name: Release
+name: test and release
 on:
   push:
     branches:
       - main
 jobs:
-  release:
-    name: Release
+  test:
+    name: test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -20,6 +20,13 @@ jobs:
       - name: Run Python tests
         uses: ./.github/actions/tests
 
+  release:
+    name: release
+    runs-on: ubuntu-latest
+#    concurrency:
+#      group: release
+#      cancel-in-progress: true
+    steps:
       # Semantic release
       - name: Setup Node.js
         uses: actions/setup-node@v3

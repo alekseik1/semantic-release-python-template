@@ -18,6 +18,8 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
+      - name: Install deps
+        uses: ./.github/actions/python-deps
       # Semantic release
       - name: Setup Node.js
         uses: actions/setup-node@v3

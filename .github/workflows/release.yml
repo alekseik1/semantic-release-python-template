@@ -8,7 +8,22 @@ on:
 
 jobs:
   test:
-    name: "test package & release dry-run"
+    name: "test package"
+    runs-on: ubuntu-latest
+    # Save time - no tests on push to `release` branch
+    if: github.ref_name != 'release'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Install deps
+        uses: ./.github/actions/python-deps
+      - name: Run tests
+        uses: ./.github/actions/tests
+  release-dry-run:
+    name: "release dry-run"
     runs-on: ubuntu-latest
     # Save time - no tests on push to `release` branch
     if: github.ref_name != 'release'
@@ -38,6 +53,7 @@ jobs:
     if: github.ref_name == 'release'
     needs:
       - test
+      - release-dry-run
     # semantic release will skip outdated branch anyway, this will prevent from spending CI minutes on that
     concurrency:
       group: release

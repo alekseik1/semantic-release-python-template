@@ -32,3 +32,15 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: npx semantic-release --debug
+      - name: Save version to PR title
+        run: |
+          VERSION=$(poetry version -s)
+          echo "PULL_REQUEST_TITLE=Push release $VERSION back to trunk" >> $GITHUB_ENV
+      - name: Open PR back to trunk
+        uses: vsoch/pull-request-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH_PREFIX: "release"
+          PULL_REQUEST_BRANCH: "trunk"
+          PULL_REQUEST_BODY: "Automatic PR, please merge it."
+          PULL_REQUEST_ASSIGNEES: "alekseik1"

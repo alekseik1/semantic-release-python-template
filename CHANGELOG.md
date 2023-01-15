@@ -1,3 +1,17 @@
+# [1.4.0](https://github.com/alekseik1/semantic-release-python-template/compare/v1.3.0...v1.4.0) (2023-01-15)
+
+
+### Features
+
+* **main:** min of list ([e5b4f15](https://github.com/alekseik1/semantic-release-python-template/commit/e5b4f155a5c3ad3a6887d2e142efb22c2f768d50))
+* **main:** min of two ([c4ec103](https://github.com/alekseik1/semantic-release-python-template/commit/c4ec103dc3de9f979a5833792d89bece21470c8a))
+
+
+
+
+
+Bumping version from 1.3.0 to 1.4.0
+
 # [1.3.0](https://github.com/alekseik1/semantic-release-python-template/compare/v1.2.0...v1.3.0) (2023-01-15)
 
 

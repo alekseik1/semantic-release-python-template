@@ -3,6 +3,10 @@ on:
   push:
     branches:
       - release
+      - trunk
+  pull_request:
+    branches:
+      - trunk
 
 jobs:
   release:
@@ -29,9 +33,19 @@ jobs:
       - name: Install Node packages
         run: npm i
       - name: Release
+        # Only on push to release
+        if: github.ref_name == 'release'
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: npx semantic-release --debug
+      - name: Release dry-mode
+        # PR/usual commit on trunk OR PR to release
+        if: |
+          ${{ github.base_ref || github.ref_name }} == 'trunk' ||
+          ${{ github.base_ref }} == 'release'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: npx semantic-release --debug --dry-run
       - name: Save version to PR title
         run: |
           VERSION=$(poetry version -s)

@@ -51,9 +51,6 @@ jobs:
     name: release
     runs-on: ubuntu-latest
     if: github.ref_name == 'release'
-    needs:
-      - test
-      - release-dry-run
     # semantic release will skip outdated branch anyway, this will prevent from spending CI minutes on that
     concurrency:
       group: release

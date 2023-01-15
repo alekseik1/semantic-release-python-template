@@ -1,12 +1,14 @@
-name: Test PR
+name: Python tests
 on:
   pull_request:
     branches:
-      - main
+      - trunk
+  push:
+    branches-ignore:
       - release
 
 jobs:
-  release:
+  test:
     name: Test
     runs-on: ubuntu-latest
     steps:
